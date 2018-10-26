@@ -8,10 +8,11 @@ html = """
 	<input id="mychat" placeholder="Type message and press enter"/>
 	<div id="chat"></div>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
 	<script>
 	$('#mychat').keypress(function(e){
 		if( e.keyCode==13 ){
-			$.get('/send',{msg:$('#mychat').val()});
+			$.get('/send',{msg:_.escape($('#mychat').val())});
 			$('#mychat').val('');
 		}
 	});
